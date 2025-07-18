@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Newsletter Workflow</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .section { margin-bottom: 20px; }
+        .log { color: #555; margin-top: 5px; }
+        button { padding: 10px 20px; }
+    </style>
+</head>
+<body>
+    <h1>Newsletter Workflow</h1>
+
+    <div class="section">
+        <form method="post" action="/scrape">
+            <button type="submit">1. Scrape Data</button>
+        </form>
+        {% if logs.scrape %}<div class="log">{{ logs.scrape }}</div>{% endif %}
+    </div>
+
+    <div class="section">
+        <form method="post" action="/render">
+            <button type="submit">2. Render Newsletter</button>
+        </form>
+        {% if logs.render %}<div class="log">{{ logs.render }}</div>{% endif %}
+    </div>
+
+    <div class="section">
+        <form method="post" action="/send">
+            <button type="submit">3. Send Newsletter</button>
+        </form>
+        {% if logs.send %}<div class="log">{{ logs.send }}</div>{% endif %}
+    </div>
+</body>
+</html>
