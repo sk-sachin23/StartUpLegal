@@ -1,0 +1,9 @@
+requests
+beautifulsoup4
+fake-useragent
+playwright
+jinja2
+pdfkit
+python-dotenv
+mailchimp-marketing
+urllib3
