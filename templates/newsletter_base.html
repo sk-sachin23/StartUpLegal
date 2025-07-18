@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Higher Education Regulatory Newsletter</title>
+  </head>
+  <body>
+    <div class="newsletter-box">
+      <div class="header">
+        <img
+          class="logo"
+          src="https://edulegal.org/assets/images/logo.png"
+          alt="EduLegaL Logo"
+          onerror="this.style.display='none'"
+        />
+        <div class="title-block">
+          <h1>Higher Education Regulatory Newsletter</h1>
+          <p class="subtitle">Edition Date: {{ edition_date }}</p>
+          <p class="edition-number">Edition Number: {{ edition_number }}</p>
+          <a href={{ pdf_url }}
+             id="download-pdf"
+             style="/* keep your existing inline PDF button styles here */">
+            Download as PDF
+          </a>
+        </div>
+      </div>
+
+      <div class="tags">
+        <span class="tags-title">Regulatory Bodies Covered</span>
+        <div class="body-list">
+          {% for authority, notices in data.items() %}
+            <span>{{ authority }}</span>
+          {% endfor %}
+        </div>
+      </div>
+
+      {% for authority, notices in data.items() %}
+        <div class="body-section">
+          {% include 'body_' + authority | lower + '.html' ignore missing %}
+        </div>
+      {% endfor %}
+
+      <div class="footer">
+        <div class="footer-section footer-left">
+          <p>201A, P T Gera Centre, Bund Garden Road, Pune – 411 001</p>
+          <p>
+            <strong>76209 07199</strong> | mail@edulegal.in |
+            <a href="https://www.edulegal.org" target="_blank">www.edulegal.org</a>
+          </p>
+        </div>
+
+        <div class="footer-section footer-center">
+          <a href="*|SUBSCRIBE_URL|*" class="subscribe-link">Subscribe</a>
+          <span class="separator">|</span>
+          <a href="*|UNSUB|*" class="unsubscribe-link">Unsubscribe</a>
+        </div>
+
+        <div class="footer-section footer-right">
+          <p><strong>Our Firms:</strong></p>
+          <p>
+            <a href="https://www.edulegal.in" target="_blank">EduLegaL</a> |
+            <a href="https://www.genderlegal.in" target="_blank">GenderLegaL</a> |
+            <a href="https://www.divyangleagal.in" target="_blank">DivyangLegaL</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

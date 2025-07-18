@@ -1,0 +1,39 @@
+<!-- Newsletter body for CBSE -->
+{% if notices %}
+<h2>Central Board of Secondary Education (CBSE)</h2>
+<table>
+  <tr>
+    <th>S No.</th>
+    <th>Date</th>
+    <th>Title</th>
+    <th>Tags</th>
+    <th>Link</th>
+  </tr>
+
+  {% for notice in notices.values() %}
+  <tr>
+    <td>{{ loop.index }}</td>
+    <td>{{ notice.get('Date') or notice.get('date') or 'N/A' }}</td>
+    <td>{{ notice.get('Title') or notice.get('title') }}</td>
+    <td>
+      {% if notice.get('tags') %}
+        {{ notice.tags | join(', ') }}
+      {% else %}
+        N/A
+      {% endif %}
+    </td>
+    <td>
+      {% if notice.get('Links') %}
+        {% for key, l in notice.Links.items() %}
+          <a href="{{ l }}" target="_blank">{{ key }}</a>{% if not loop.last %}<br>{% endif %}
+        {% endfor %}
+      {% elif notice.get('Link') %}
+        <a href="{{ notice.Link }}" target="_blank">View</a>
+      {% else %}
+        N/A
+      {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}

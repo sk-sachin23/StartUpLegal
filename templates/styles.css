@@ -1,0 +1,304 @@
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  color: #1a1a1a;
+  background: #e8eef3;
+  margin: 0;
+  padding: 5% 2%;
+  line-height: 1.6;
+  font-size: 16px;            /* desktop base font */
+}
+
+.newsletter-box {
+  max-width: 95%;
+  background: #ffffff;
+  margin: 0 auto;
+  padding: 5%;
+  box-shadow: 0 0.8% 3% rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* --- HEADER --- */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3.5%;
+  padding-bottom: 2.5%;
+  border-bottom: 0.1% solid #d0e3f0;
+}
+
+.logo {
+  max-width: 20%;
+  height: auto;
+}
+
+.title-block {
+  text-align: right;
+}
+
+h1 {
+  font-size: 24px;             /* desktop */
+  margin-bottom: 0.5%;
+  color: #1f4e79;
+  margin-top: 0;
+}
+
+p.subtitle {
+  font-size: 14px;             /* desktop */
+  color: #1f4e79;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* --- TAGS --- */
+.tags {
+  text-align: center;
+  margin-bottom: 4%;
+}
+
+.tags-title {
+  display: block;
+  margin-bottom: 1%;
+  font-weight: bold;
+  color: #1f4e79;
+  font-size: 16px;             /* desktop */
+}
+
+.tags .body-list span {
+  font-size: 14px;             /* desktop */
+  color: #1f4e79;
+  text-decoration: none;
+}
+
+.tags .body-list span:not(:last-child)::after {
+  content: " | ";
+  margin: 0 0.5%;
+  color: #1f4e79;
+}
+
+/* --- CONTENT SECTIONS --- */
+h2 {
+  margin-top: 5%;
+  margin-bottom: 1%;
+  color: #1f4e79;
+  font-size: 20px;             /* desktop */
+  border-bottom: 4px solid #1f4e79;
+  padding-bottom: 0.4%;
+}
+
+h3 {
+  margin-top: 2.5%;
+  margin-bottom: 0.5%;
+  color: #1f4e79;
+  font-size: 18px;             /* desktop */
+}
+
+/* --- TABLES (borders removed) --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 2% 0 4% 0;
+  background: #ffffff;
+  /* border removed */
+  box-shadow: 0 0.4% 1% rgba(0, 0, 0, 0.05);
+  table-layout: fixed;
+}
+
+th, td {
+  /* borders removed */
+  padding: 1.2% 1.5%;
+  text-align: left;
+  font-size: 14px;             /* desktop */
+  word-wrap: break-word;
+}
+
+th:last-child,
+td:last-child {
+  /* no border to remove */
+}
+
+th {
+  background-color: #d0e3f0;
+  font-weight: 600;
+  color: #1f4e79;
+}
+
+td.col-sno {
+  font-size: 13px;             /* desktop */
+  font-weight: bold;
+  text-align: center;
+  color: #1f4e79;
+}
+
+th.col-sno {
+  text-align: center;
+}
+
+tr:nth-child(even) td {
+  background-color: #f1f5f9;
+}
+
+tr:hover td {
+  background-color: #e8f1f8;
+}
+
+td a {
+  color: #1f4e79;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+td a:hover {
+  text-decoration: underline;
+}
+
+/* --- Column Widths with nth-child --- */
+td:nth-child(1), th:nth-child(1) { width: 5%; }
+td:nth-child(2), th:nth-child(2) { width: 11%; }
+td:nth-child(3), th:nth-child(3) { width: 55%; }
+td:nth-child(4), th:nth-child(4) { width: 19%; }
+td:nth-child(5), th:nth-child(5) { width: 10%; }
+
+/* --- FOOTER --- */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2%;
+  margin-top: 6%;
+  font-size: 14px;             /* desktop */
+  background-color: #1f4e79;
+  color: #e8eef3;
+  margin-left: -6%;
+  margin-right: -6%;
+  margin-bottom: -6%;
+  padding: 3% 4%;
+}
+
+.footer-left, .footer-right {
+  flex: 1;
+  min-width: 30%;
+}
+
+.footer-right {
+  text-align: right;
+}
+
+.footer p {
+  margin: 0 0 1% 0;
+}
+
+.footer a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* --- DOWNLOAD BUTTON (right-aligned) --- */
+#download-pdf {
+  display: block;
+  margin: 16px 0 16px auto;
+  padding: 8px 16px;
+  font-size: 14px;             /* desktop */
+  font-family: inherit;
+  color: #003366;
+  background-color: transparent;
+  border: 2px solid #003366;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+#download-pdf:hover {
+  background-color: #003366;
+  color: #ffffff;
+}
+
+/* --- RESPONSIVE DESIGN (mobile font overrides) --- */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  .header {
+    flex-direction: column;
+    gap: 2%;
+  }
+  .title-block {
+    text-align: center;
+  }
+  h1 {
+    font-size: 20px;
+  }
+  p.subtitle {
+    font-size: 12px;
+  }
+  .tags-title {
+    font-size: 14px;
+  }
+  .tags .body-list span {
+    font-size: 12px;
+  }
+  h2 {
+    font-size: 18px;
+  }
+  h3 {
+    font-size: 16px;
+  }
+  th, td {
+    font-size: 12px;
+  }
+  .footer {
+    font-size: 12px;
+  }
+  .footer-right {
+    text-align: left;
+  }
+  #download-pdf {
+    font-size: 12px;
+  }
+}
+
+/* --- FOOTER: equal-width sections & alignment --- */
+.footer-section {
+  flex: 1;
+  min-width: 150px;
+}
+
+.footer-left {
+  text-align: left;
+}
+
+.footer-center {
+  text-align: center;
+}
+
+.footer-right {
+  text-align: right;
+}
+
+/* --- Subscribe / Unsubscribe link styling --- */
+.subscribe-link,
+.unsubscribe-link {
+  color: #ffd54f;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 5px;
+}
+
+.subscribe-link:hover,
+.unsubscribe-link:hover {
+  text-decoration: underline;
+}
+
+/* --- Separator between links --- */
+.separator {
+  margin: 0 5px;
+  color: #e8eef3;
+}

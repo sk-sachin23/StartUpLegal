@@ -1,0 +1,6 @@
+/MISC
+/.venv
+/.vscode
+/EDU/__pycache__
+/logs
+/.env

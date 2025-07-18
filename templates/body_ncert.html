@@ -1,0 +1,33 @@
+<!-- Newsletter body for NCERT -->
+{% if notices %}
+<h2>National Council of Educational Research and Training (NCERT)</h2>
+<table>
+  <tr>
+    <th>S No.</th>
+    <th>Date</th>
+    <th>Title</th>
+    <th>Tags</th>
+    <th>Link</th>
+  </tr>
+  {% for notice in notices.values() %}
+  <tr>
+    <td>{{ loop.index }}</td>
+    <td>{{ '-' }}</td>
+    <td>{{ notice.Title if notice.get('Title') else notice.get('title') }}</td>
+    <td>
+      {% if notice.get('tags') %}
+        {{ notice.tags | join(', ') }}
+      {% else %}
+        N/A
+      {% endif %}
+    <td>
+      {% if notice.get('Link') %}
+        <a href="{{ notice.Link }}">View</a>
+      {% else %}
+        N/A
+      {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
