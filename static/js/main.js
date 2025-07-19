@@ -8,3 +8,14 @@ document.querySelectorAll('form').forEach(form => {
     spinner.classList.remove('d-none');
   });
 });
+
+// select all checkboxes for scraping
+const selectAll = document.getElementById('select-all');
+if (selectAll) {
+  selectAll.addEventListener('change', () => {
+    const checked = selectAll.checked;
+    document.querySelectorAll('.body-checkbox').forEach(cb => {
+      cb.checked = checked;
+    });
+  });
+}

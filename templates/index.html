@@ -20,12 +20,40 @@
               {{ logs[step] or '—' }}
             </p>
             <form action="/{{step}}" method="post" class="mt-auto">
+              {% if step == 'scrape' %}
+                <div class="mb-3">
+                  {% for body in bodies %}
+                    <div class="form-check">
+                      <input class="form-check-input body-checkbox" type="checkbox" name="bodies" value="{{body}}" id="chk-{{body}}">
+                      <label class="form-check-label" for="chk-{{body}}">{{body}}</label>
+                    </div>
+                  {% endfor %}
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="select-all">
+                    <label class="form-check-label" for="select-all">Select All</label>
+                  </div>
+                </div>
+              {% elif step == 'render' %}
+                <div class="mb-3">
+                  <label class="form-label">Edition Number</label>
+                  <input type="number" class="form-control" name="edition_number" required value="1"/>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Output PDF Name</label>
+                  <input type="text" class="form-control" name="output_pdf" value="newsletter.pdf" required/>
+                </div>
+              {% elif step == 'send' %}
+                <div class="mb-3">
+                  <label class="form-label">Audience/List ID</label>
+                  <input type="text" class="form-control" name="audience_id" required/>
+                </div>
+              {% endif %}
               <button
                 type="submit"
                 id="{{step}}-btn"
                 class="btn btn-primary w-100 d-flex justify-content-center align-items-center"
-                {% if status[step] 
-                      or (step!='scrape' and not status['scrape']) 
+                {% if status[step]
+                      or (step!='scrape' and not status['scrape'])
                       or (step=='send' and not status['render']) %}
                   disabled
                 {% endif %}
