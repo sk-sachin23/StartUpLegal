@@ -68,7 +68,10 @@ def html_to_pdf_pdfkit(
     :param wkhtmltopdf_path: Optional path to the wkhtmltopdf binary.
     :param options: Optional dict of wkhtmltopdf command-line options.
     """
+    
     config = None
+    if wkhtmltopdf_path is None:
+        wkhtmltopdf_path = os.environ.get("WKHTMLTOPDF_PATH")
     if wkhtmltopdf_path:
         config = pdfkit.configuration(wkhtmltopdf=wkhtmltopdf_path)
 
@@ -97,7 +100,10 @@ if __name__ == '__main__':
     OUTPUT_HTML = 'newsletter.html'
     OUTPUT_PDF = 'newsletter.pdf'
     # If wkhtmltopdf isn't on PATH, set this:
-    WKHTMLTOPDF_PATH = "/wkhtmltopdf/bin/wkhtmltopdf.exe"  # e.g., '/usr/local/bin/wkhtmltopdf'
+    WKHTMLTOPDF_PATH = os.environ.get(
+        "WKHTMLTOPDF_PATH",
+        "/wkhtmltopdf/bin/wkhtmltopdf.exe"  # e.g., '/usr/local/bin/wkhtmltopdf'
+    )
 
     # Render and convert
     render_newsletter_html(

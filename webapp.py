@@ -71,7 +71,8 @@ def render_newsletter():
             css_path='templates/styles.css',
             output_html='newsletter.html'
         )
-        render_mod.html_to_pdf_pdfkit('newsletter.html', output_pdf)
+        wkhtmltopdf_path = os.environ.get('WKHTMLTOPDF_PATH')
+        render_mod.html_to_pdf_pdfkit('newsletter.html', output_pdf, wkhtmltopdf_path=wkhtmltopdf_path)
         logs['render'] = f'Rendered newsletter and {output_pdf}.'
         status['render'] = True
     except Exception as e:
