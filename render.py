@@ -97,7 +97,7 @@ if __name__ == '__main__':
     OUTPUT_HTML = 'newsletter.html'
     OUTPUT_PDF = 'newsletter.pdf'
     # If wkhtmltopdf isn't on PATH, set this:
-    WKHTMLTOPDF_PATH = "C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe"  # e.g., '/usr/local/bin/wkhtmltopdf'
+    WKHTMLTOPDF_PATH = "/wkhtmltopdf/bin/wkhtmltopdf.exe"  # e.g., '/usr/local/bin/wkhtmltopdf'
 
     # Render and convert
     render_newsletter_html(

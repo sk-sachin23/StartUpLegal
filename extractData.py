@@ -102,6 +102,9 @@ def extractData(educational_bodies):
     else:
         write_log("No changes detected for any educational body. No file written.")
         print("No changes detected. No new data file written.")
+        if os.path.exists(yesterday_file):
+            output_path = yesterday_file
+            write_log(f"Using yesterday's file: {yesterday_file}")
 
     end_time = time.time()
     exec_time = end_time - start_time

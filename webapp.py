@@ -19,7 +19,11 @@ logs = {
     'send': ''
 }
 
-EDUCATIONAL_BODIES = sorted([f.split('.')[0] for f in os.listdir('EDU') if f.endswith('.py')])
+EDUCATIONAL_BODIES = sorted([
+    f.split('.')[0]
+    for f in os.listdir('EDU')
+    if f.endswith('.py') and f != '__init__.py'
+])
 
 last_data_file = None
 
@@ -37,7 +41,8 @@ def scrape():
 
         exec_time, data_file = extractData.extractData(selected)
         status['scrape'] = True
-        last_data_file = data_file
+        if data_file:
+            last_data_file = data_file
         logs['scrape'] = f'Scraping finished in {exec_time:.1f}s.'
         if data_file:
             logs['scrape'] += f' Saved to {data_file}.'
