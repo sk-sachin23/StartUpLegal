@@ -92,11 +92,13 @@ def extractData(educational_bodies):
             write_log(tb)
 
     # Write changed data if there is any change
+    output_path = None
     if changed_data:
         with open(today_file, "w", encoding="utf-8") as f:
             json.dump(changed_data, f, indent=2, ensure_ascii=False)
         write_log(f"Written changed data to {today_file}")
         print(f"Changed data written to {today_file}")
+        output_path = today_file
     else:
         write_log("No changes detected for any educational body. No file written.")
         print("No changes detected. No new data file written.")
@@ -106,5 +108,7 @@ def extractData(educational_bodies):
     write_log(f"Execution time: {exec_time:.2f} seconds")
     print("Execution time:", exec_time, "seconds")
     print(f"Log file saved at {log_filename}")
+
+    return exec_time, output_path
     
 
