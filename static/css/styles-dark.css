@@ -1,0 +1,29 @@
+/* ensure body always dark */
+body {
+  background-color: #121212 !important;
+  color: #e0e0e0 !important;
+}
+
+/* card adjustments */
+.card {
+  border: none;
+  background-color: #1e1e1e;
+}
+
+/* truncate logs elegantly */
+.text-truncate {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* button hover in dark */
+.btn-primary {
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+.btn-primary:hover {
+  background-color: #0053ba;
+  border-color: #004499;
+}

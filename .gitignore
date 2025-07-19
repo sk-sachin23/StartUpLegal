@@ -4,3 +4,5 @@
 /EDU/__pycache__
 /logs
 /.env
+/__pycache__
+/data

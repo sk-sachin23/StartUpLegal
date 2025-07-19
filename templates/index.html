@@ -1,37 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Newsletter Workflow</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        .section { margin-bottom: 20px; }
-        .log { color: #555; margin-top: 5px; }
-        button { padding: 10px 20px; }
-    </style>
-</head>
-<body>
-    <h1>Newsletter Workflow</h1>
+{% extends 'layout.html' %}
+{% block content %}
+  <h1 class="text-center mb-4">Newsletter Pipeline</h1>
 
-    <div class="section">
-        <form method="post" action="/scrape">
-            <button type="submit">1. Scrape Data</button>
-        </form>
-        {% if logs.scrape %}<div class="log">{{ logs.scrape }}</div>{% endif %}
-    </div>
-
-    <div class="section">
-        <form method="post" action="/render">
-            <button type="submit">2. Render Newsletter</button>
-        </form>
-        {% if logs.render %}<div class="log">{{ logs.render }}</div>{% endif %}
-    </div>
-
-    <div class="section">
-        <form method="post" action="/send">
-            <button type="submit">3. Send Newsletter</button>
-        </form>
-        {% if logs.send %}<div class="log">{{ logs.send }}</div>{% endif %}
-    </div>
-</body>
-</html>
+  <div class="row gy-4">
+    {% for step in ['scrape','render','send'] %}
+      <div class="col-12 col-md-4">
+        <div class="card bg-secondary text-light h-100">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title text-capitalize">{{ step }}</h5>
+            <p class="card-text mb-1">
+              <strong>Status:</strong>
+              {% if status[step] %}
+                <span class="badge bg-success">Done</span>
+              {% else %}
+                <span class="badge bg-warning text-dark">Pending</span>
+              {% endif %}
+            </p>
+            <p class="card-text text-truncate text-white-50 mb-3">
+              {{ logs[step] or '—' }}
+            </p>
+            <form action="/{{step}}" method="post" class="mt-auto">
+              <button
+                type="submit"
+                id="{{step}}-btn"
+                class="btn btn-primary w-100 d-flex justify-content-center align-items-center"
+                {% if status[step] 
+                      or (step!='scrape' and not status['scrape']) 
+                      or (step=='send' and not status['render']) %}
+                  disabled
+                {% endif %}
+              >
+                <div
+                  class="spinner-border spinner-border-sm me-2 d-none"
+                  role="status"
+                  id="{{step}}-spinner"
+                ></div>
+                <span>Run {{ step }}</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

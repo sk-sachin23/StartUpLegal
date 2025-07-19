@@ -5,6 +5,13 @@ from dotenv import load_dotenv
 from jinja2 import Environment, FileSystemLoader
 from mailchimp_marketing import Client
 from mailchimp_marketing.api_client import ApiClientError
+import datetime
+
+# html file name based on today's date
+# This will be used to save the local copy of the newsletter
+# and also as the name for the Mailchimp campaign
+# e.g. 2025-07-08.html
+FILE_NAME = datetime.date.today().strftime("%d-%m-%Y") + ".html"
 
 # === CONFIG ===
 load_dotenv(dotenv_path='.env')
@@ -32,11 +39,11 @@ html_content = template.render(
 )
 
 # === SAVE LOCAL COPY ===
-with open("file.html", "w", encoding="utf-8") as f:
+with open(FILE_NAME, "w", encoding="utf-8") as f:
     f.write(html_content)
 
 # === INITIALIZE MAILCHIMP CLIENT ===
-"""mailchimp = Client()
+mailchimp = Client()
 mailchimp.set_config({
     "api_key": MAILCHIMP_API_KEY,
     "server": SERVER_PREFIX
@@ -63,5 +70,3 @@ try:
 
 except ApiClientError as error:
     print(f"✖ Mailchimp error: {error.text}")
-
-"""

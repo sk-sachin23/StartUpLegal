@@ -6,7 +6,6 @@ import datetime
 
 def render_newsletter_html(
     data_json: str,
-    templates_dir: str,
     template_name: str,
     edition_date: str,
     edition_number: int,
@@ -31,7 +30,7 @@ def render_newsletter_html(
         data = json.load(f)
 
     # Render template
-    env = Environment(loader=FileSystemLoader(templates_dir))
+    env = Environment(loader=FileSystemLoader("templates"))
     template = env.get_template(template_name)
     html_content = template.render(
         data=data,
@@ -103,7 +102,6 @@ if __name__ == '__main__':
     # Render and convert
     render_newsletter_html(
         DATA_JSON,
-        TEMPLATES_DIR,
         TEMPLATE_NAME,
         EDITION_DATE,
         EDITION_NUMBER,

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ title or "Newsletter Pipeline" }}</title>
+
+  <!-- Bootstrap 5 Dark mode CSS from CDN -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-…"
+    crossorigin="anonymous"
+  />
+  <!-- Your custom dark overrides -->
+  <link
+    href="{{ url_for('static', filename='css/styles-dark.css') }}"
+    rel="stylesheet"
+  />
+</head>
+<body class="d-flex flex-column min-vh-100 bg-dark text-light">
+  <main class="flex-fill">
+    <div class="container py-5">
+      {% block content %}{% endblock %}
+    </div>
+  </main>
+
+  <!-- Bootstrap JS bundle (includes Popper) -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-…"
+    crossorigin="anonymous"
+  ></script>
+  <!-- Your custom JS -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
