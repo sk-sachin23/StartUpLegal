@@ -2,7 +2,7 @@
 {% block content %}
   <h1 class="text-center mb-4">Newsletter Pipeline</h1>
 
-  <div class="row gy-4">
+  <div class="row gy-4 justify-content-center">
     {% for step in ['scrape','render','send'] %}
       <div class="col-12 col-md-4">
         <div class="card bg-secondary text-light h-100">
@@ -20,19 +20,19 @@
               {{ logs[step] or '—' }}
             </p>
             <form action="/{{step}}" method="post" class="mt-auto">
-              {% if step == 'scrape' %}
-                <div class="mb-3">
-                  {% for body in bodies %}
-                    <div class="form-check">
-                      <input class="form-check-input body-checkbox" type="checkbox" name="bodies" value="{{body}}" id="chk-{{body}}">
-                      <label class="form-check-label" for="chk-{{body}}">{{body}}</label>
+                {% if step == 'scrape' %}
+                  <div class="mb-3 d-flex flex-wrap gap-2">
+                    {% for body in bodies %}
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input body-checkbox" type="checkbox" name="bodies" value="{{body}}" id="chk-{{body}}">
+                        <label class="form-check-label" for="chk-{{body}}">{{body}}</label>
+                      </div>
+                    {% endfor %}
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="select-all">
+                      <label class="form-check-label" for="select-all">Select All</label>
                     </div>
-                  {% endfor %}
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="select-all">
-                    <label class="form-check-label" for="select-all">Select All</label>
                   </div>
-                </div>
               {% elif step == 'render' %}
                 <div class="mb-3">
                   <label class="form-label">Edition Number</label>
