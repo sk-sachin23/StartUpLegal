@@ -31,8 +31,8 @@ body {
 
 /* checkbox layout */
 .bodies-container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   gap: 0.5rem;
 }
 
@@ -41,5 +41,24 @@ body {
 }
 
 .body-item {
-  flex: 0 0 calc(20% - 0.5rem); /* 5 items per row */
+  width: 100%;
+}
+
+/* laptop & tablets */
+@media (max-width: 1199px) {
+  .bodies-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 991px) {
+  .bodies-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+  .bodies-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
