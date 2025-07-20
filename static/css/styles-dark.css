@@ -28,3 +28,18 @@ body {
   background-color: #0053ba;
   border-color: #004499;
 }
+
+/* checkbox layout */
+.bodies-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.select-all-row {
+  width: 100%;
+}
+
+.body-item {
+  flex: 0 0 calc(20% - 0.5rem); /* 5 items per row */
+}
