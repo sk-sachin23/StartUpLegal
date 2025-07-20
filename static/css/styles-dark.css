@@ -8,6 +8,7 @@ body {
 .card {
   border: none;
   background-color: #1e1e1e;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
 /* truncate logs elegantly */

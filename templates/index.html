@@ -7,13 +7,22 @@
       <div class="col-12 col-md-4">
         <div class="card bg-secondary text-light h-100">
           <div class="card-body d-flex flex-column">
-            <h5 class="card-title text-capitalize">{{ step }}</h5>
-            <p class="card-text mb-1">
+            <h5 class="card-title text-capitalize">
+              {% if step == 'scrape' %}
+                <i class="bi bi-cloud-download-fill me-1"></i>
+              {% elif step == 'render' %}
+                <i class="bi bi-file-earmark-text-fill me-1"></i>
+              {% else %}
+                <i class="bi bi-send-fill me-1"></i>
+              {% endif %}
+              {{ step }}
+            </h5>
+            <p class="card-text mb-1 d-flex align-items-center gap-1">
               <strong>Status:</strong>
               {% if status[step] %}
-                <span class="badge bg-success">Done</span>
+              <i class="bi bi-check-circle-fill text-success"></i
               {% else %}
-                <span class="badge bg-warning text-dark">Pending</span>
+                <i class="bi bi-hourglass-split text-warning"></i>
               {% endif %}
             </p>
             <p class="card-text text-truncate text-white-50 mb-3">
@@ -51,7 +60,7 @@
               <button
                 type="submit"
                 id="{{step}}-btn"
-                class="btn btn-primary w-100 d-flex justify-content-center align-items-center"
+                class="btn btn-primary w-100 d-flex justify-content-center align-items-center gap-1"
                 {% if status[step]
                       or (step!='scrape' and not status['scrape'])
                       or (step=='send' and not status['render']) %}
@@ -63,6 +72,7 @@
                   role="status"
                   id="{{step}}-spinner"
                 ></div>
+                <i class="bi bi-play-fill"></i>
                 <span>Run {{ step }}</span>
               </button>
             </form>
