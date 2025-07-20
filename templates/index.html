@@ -30,17 +30,19 @@
             </p>
             <form action="/{{step}}" method="post" class="mt-auto">
                 {% if step == 'scrape' %}
-                  <div class="mb-3 d-flex flex-wrap gap-2">
+                  <div class="mb-3 d-flex flex-wrap gap-2 bodies-container">
+                    <div class="w-100 select-all-row">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="select-all">
+                        <label class="form-check-label" for="select-all">Select All</label>
+                      </div>
+                    </div>
                     {% for body in bodies %}
-                      <div class="form-check form-check-inline">
+                      <div class="form-check body-item">
                         <input class="form-check-input body-checkbox" type="checkbox" name="bodies" value="{{body}}" id="chk-{{body}}">
                         <label class="form-check-label" for="chk-{{body}}">{{body}}</label>
                       </div>
                     {% endfor %}
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="select-all">
-                      <label class="form-check-label" for="select-all">Select All</label>
-                    </div>
                   </div>
               {% elif step == 'render' %}
                 <div class="mb-3">
