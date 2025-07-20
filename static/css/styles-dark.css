@@ -31,9 +31,10 @@ body {
 
 /* checkbox layout */
 .bodies-container {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
+  overflow: hidden;
 }
 
 .select-all-row {
@@ -41,24 +42,24 @@ body {
 }
 
 .body-item {
-  width: 100%;
+  flex: 0 0 calc(20% - 0.5rem);
 }
 
 /* laptop & tablets */
 @media (max-width: 1199px) {
-  .bodies-container {
-    grid-template-columns: repeat(4, 1fr);
+  .body-item {
+    flex-basis: calc(25% - 0.5rem);
   }
 }
 
 @media (max-width: 991px) {
-  .bodies-container {
-    grid-template-columns: repeat(3, 1fr);
+  .body-item {
+    flex-basis: calc(33.333% - 0.5rem);
   }
 }
 
 @media (max-width: 575px) {
-  .bodies-container {
-    grid-template-columns: repeat(2, 1fr);
+  .body-item {
+    flex-basis: calc(50% - 0.5rem);
   }
 }
