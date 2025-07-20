@@ -38,11 +38,27 @@ body {
 
 .select-all-row {
   width: 100%;
+  grid-column: 1 / -1;    /* occupy the whole first row */
+  background-color: #2c2c2c;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.select-all-row label {
+  font-weight: 600;
 }
 
 .body-item {
   width: 100%;
 }
+
+.body-item label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}
+
 
 /* laptop & tablets */
 @media (max-width: 1199px) {
