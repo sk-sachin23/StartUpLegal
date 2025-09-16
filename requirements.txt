@@ -7,3 +7,4 @@ pdfkit
 python-dotenv
 mailchimp-marketing
 urllib3
+flask
