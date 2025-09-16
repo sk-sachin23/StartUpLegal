@@ -16,7 +16,7 @@
     <tr>
       <td>{{ loop.index }}</td>
       <td>{{ notice.get('Date') or notice.get('date') or 'N/A' }}</td>
-      <td>{{ notice.title }}</td>
+      <td>{{ notice.Title }}</td>
       <td>
         {% if notice.get('tags') %}
           {{ notice.tags | join(', ') }}
